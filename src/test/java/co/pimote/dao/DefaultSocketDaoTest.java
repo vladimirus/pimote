@@ -48,4 +48,24 @@ public class DefaultSocketDaoTest {
         // then
         assertThat(actual.isPresent(), is(true));
     }
+
+    @Test
+    public void shouldDelete() {
+
+        // when
+        Boolean actual = defaultSocketDao.delete(1);
+
+        // then
+        assertThat(actual, is(true));
+    }
+
+    @Test
+    public void shouldNotDelete() {
+
+        // when
+        Boolean actual = defaultSocketDao.delete(99);
+
+        // then
+        assertThat(actual, is(false));
+    }
 }

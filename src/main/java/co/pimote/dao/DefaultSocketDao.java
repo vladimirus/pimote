@@ -39,6 +39,6 @@ public class DefaultSocketDao implements SocketDao{
 
     @Override
     public Boolean delete(Integer id) {
-        return null;
+        return sockets.removeIf(s -> s.getId().equals(id));
     }
 }

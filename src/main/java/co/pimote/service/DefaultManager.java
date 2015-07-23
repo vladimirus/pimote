@@ -7,6 +7,7 @@ import co.pimote.model.Socket;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class DefaultManager implements SocketManager {
@@ -21,5 +22,12 @@ public class DefaultManager implements SocketManager {
     @Override
     public Collection<Socket> get() {
         return sockets;
+    }
+
+    @Override
+    public Optional<Socket> get(Integer id) {
+        return sockets.stream()
+                .filter(socket -> socket.getId() == id)
+                .findFirst();
     }
 }

@@ -2,6 +2,7 @@ package co.pimote.service;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 
 import co.pimote.model.Socket;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DefaultManagerTest {
@@ -24,5 +26,15 @@ public class DefaultManagerTest {
 
         // then
         assertThat(actual, hasSize(4));
+    }
+
+    @Test
+    public void shouldGetById() {
+
+        // when
+        Optional<Socket> actual = defaultManager.get(1);
+
+        // then
+        assertThat(actual.isPresent(), is(true));
     }
 }

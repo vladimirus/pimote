@@ -86,4 +86,18 @@ public class SocketControllerTest {
         // then
         assertThat(actual.getOk(), is(true));
     }
+
+    @Test
+    public void shouldDelete() {
+        // given
+        Optional<Socket> socket = of(aSocket(1));
+        given(socketManager.get(anyInt())).willReturn(socket);
+        given(socketManager.delete(anyInt())).willReturn(true);
+
+        // when
+        Result actual = socketController.delete(1);
+
+        // then
+        assertThat(actual.getOk(), is(true));
+    }
 }

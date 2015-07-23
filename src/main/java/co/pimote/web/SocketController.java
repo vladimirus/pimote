@@ -1,5 +1,6 @@
 package co.pimote.web;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
@@ -34,6 +35,13 @@ public class SocketController {
 
         return Result.builder().ok(
                 socketManager.update(socket(id).getId(), socket).isPresent()
+        ).build();
+    }
+
+    @RequestMapping(method = DELETE)
+    public Result delete(@PathVariable("id") Integer id) {
+        return Result.builder().ok(
+                socketManager.delete(socket(id).getId())
         ).build();
     }
 }

@@ -45,6 +45,7 @@ public class DefaultSocketDaoTest {
         // when
         Optional<Socket> actual = defaultSocketDao.add(aSocket(1));
 
+        // then
         assertThat(actual.isPresent(), is(true));
     }
 }

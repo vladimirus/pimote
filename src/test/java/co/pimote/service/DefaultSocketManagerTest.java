@@ -64,6 +64,19 @@ public class DefaultSocketManagerTest {
         // when
         Optional<Socket> actual = defaultSocketManager.update(1, aSocket());
 
+        // then
         assertThat(actual.isPresent(), is(true));
+    }
+
+    @Test
+    public void shouldDelete() {
+        // given
+        given(socketDao.delete(1)).willReturn(true);
+
+        // when
+        Boolean actual = defaultSocketManager.delete(1);
+
+        // then
+        assertThat(actual, is(true));
     }
 }

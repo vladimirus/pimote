@@ -39,6 +39,11 @@ public class DefaultSocketManager implements SocketManager {
         return result;
     }
 
+    @Override
+    public Boolean delete(Integer id) {
+        return socketDao.delete(id);
+    }
+
     private <T> T replace(T oldOne, T newOne) {
         return newOne != null ? newOne : oldOne;
     }

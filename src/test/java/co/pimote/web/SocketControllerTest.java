@@ -1,5 +1,6 @@
 package co.pimote.web;
 
+import static co.pimote.TestFactory.aSocket;
 import static java.util.Optional.of;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -29,7 +30,7 @@ public class SocketControllerTest {
     @Test
     public void shouldGetSocket() {
         // given
-        given(socketManager.get(1)).willReturn(of(Socket.builder().id(1).active(true).build()));
+        given(socketManager.get(1)).willReturn(of(aSocket()));
 
         // when
         Socket actual = socketController.socket(1);
@@ -54,7 +55,7 @@ public class SocketControllerTest {
     public void shouldGetBadRequestWhenIdsDontMatch() {
 
         // when
-        Result actual = socketController.update(1, Socket.builder().id(2).active(true).build());
+        Result actual = socketController.update(1, aSocket(2));
 
         // then
         // exception
@@ -66,7 +67,7 @@ public class SocketControllerTest {
         given(socketManager.get(anyInt())).willReturn(Optional.empty());
 
         // when
-        Result actual = socketController.update(5, Socket.builder().id(5).active(true).build());
+        Result actual = socketController.update(5, aSocket(5));
 
         // then
         // exception
@@ -75,12 +76,12 @@ public class SocketControllerTest {
     @Test
     public void shouldUpdateOk() {
         // given
-        Optional<Socket> socket = of(Socket.builder().id(1).active(true).build());
+        Optional<Socket> socket = of(aSocket(1));
         given(socketManager.get(anyInt())).willReturn(socket);
         given(socketManager.update(anyInt(), any(Socket.class))).willReturn(socket);
 
         // when
-        Result actual = socketController.update(1, Socket.builder().id(1).active(true).build());
+        Result actual = socketController.update(1, aSocket(1));
 
         // then
         assertThat(actual.getOk(), is(true));

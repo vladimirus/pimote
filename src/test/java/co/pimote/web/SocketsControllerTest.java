@@ -1,5 +1,6 @@
 package co.pimote.web;
 
+import static co.pimote.TestFactory.aSocket;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
@@ -25,11 +26,7 @@ public class SocketsControllerTest {
     @Test
     public void sockets() {
         // given
-        given(socketManager.get()).willReturn(asList(
-                Socket.builder().id(1).active(false).build(),
-                Socket.builder().id(2).active(true).build(),
-                Socket.builder().id(3).active(true).build()
-        ));
+        given(socketManager.get()).willReturn(asList( aSocket(1), aSocket(2), aSocket(3)));
 
         // when
         Collection<Socket> actual = socketsController.sockets();

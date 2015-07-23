@@ -37,4 +37,13 @@ public class DefaultManagerTest {
         // then
         assertThat(actual.isPresent(), is(true));
     }
+
+    @Test
+    public void shouldUpdate() {
+
+        // when
+        Optional<Socket> actual = defaultManager.update(1, Socket.builder().id(1).active(true).build());
+
+        assertThat(actual.isPresent(), is(true));
+    }
 }

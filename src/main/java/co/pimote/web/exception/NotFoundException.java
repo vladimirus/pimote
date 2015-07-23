@@ -1,11 +1,12 @@
-package co.pimote.web;
+package co.pimote.web.exception;
 
-import org.springframework.http.HttpStatus;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Exception to represent 404 errors for JSON.
  */
-@ResponseStatus(value= HttpStatus.NOT_FOUND, reason="Not found")
+@ResponseStatus(value= NOT_FOUND, reason="Not found")
 public class NotFoundException extends RuntimeException {
 }

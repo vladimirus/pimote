@@ -1,4 +1,4 @@
-package co.pimote.model;
+package co.pimote.web;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -7,7 +7,6 @@ import lombok.ToString;
 @Builder
 @Getter
 @ToString
-public class Socket {
-    private Integer id;
-    private Boolean active;
+public class Result {
+    private Boolean ok;
 }

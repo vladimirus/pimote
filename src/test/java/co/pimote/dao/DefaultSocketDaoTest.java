@@ -40,7 +40,7 @@ public class DefaultSocketDaoTest {
     }
 
     @Test
-    public void shouldUpdate() {
+    public void shouldAdd() {
 
         // when
         Optional<Socket> actual = defaultSocketDao.add(aSocket(1));

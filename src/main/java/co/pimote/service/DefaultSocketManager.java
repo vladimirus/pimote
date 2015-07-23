@@ -1,6 +1,7 @@
 package co.pimote.service;
 
 import co.pimote.dao.SocketDao;
+import co.pimote.dao.Transmitter;
 import co.pimote.model.Socket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import java.util.Optional;
 public class DefaultSocketManager implements SocketManager {
     @Autowired
     private SocketDao socketDao;
+    @Autowired
+    private Transmitter transmitter;
 
     @Override
     public Collection<Socket> get() {

@@ -59,7 +59,7 @@ public class DefaultSocketManagerTest {
         // given
         given(socketDao.get(1)).willReturn(of(aSocket(1)));
         given(socketDao.delete(1)).willReturn(true);
-        given(socketDao.update(isA(Socket.class))).willReturn(of(aSocket(1)));
+        given(socketDao.add(isA(Socket.class))).willReturn(of(aSocket(1)));
 
         // when
         Optional<Socket> actual = defaultSocketManager.update(1, aSocket());

@@ -30,7 +30,7 @@ public class DefaultSocketManager implements SocketManager {
         Optional<Socket> result = Optional.empty();
 
         if (socketDao.delete(id)) {
-            result = socketDao.update(Socket.builder()
+            result = socketDao.add(Socket.builder()
                     .id(id)
                     .active(replace(existing.getActive(), socket.getActive()))
                     .build());

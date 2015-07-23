@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface SocketDao {
     Collection<Socket> get();
     Optional<Socket> get(Integer id);
-    Optional<Socket> update(Socket socket);
+    Optional<Socket> add(Socket socket);
     Boolean delete(Integer id);
 }

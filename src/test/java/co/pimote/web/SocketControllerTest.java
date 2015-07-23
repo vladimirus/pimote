@@ -29,7 +29,7 @@ public class SocketControllerTest {
     @Test
     public void shouldGetSocket() {
         // given
-        given(socketManager.get(1)).willReturn(of(Socket.builder().id(1).build()));
+        given(socketManager.get(1)).willReturn(of(Socket.builder().id(1).active(true).build()));
 
         // when
         Socket actual = socketController.socket(1);
@@ -54,7 +54,7 @@ public class SocketControllerTest {
     public void shouldGetBadRequestWhenIdsDontMatch() {
 
         // when
-        Result actual = socketController.update(1, Socket.builder().id(2).build());
+        Result actual = socketController.update(1, Socket.builder().id(2).active(true).build());
 
         // then
         // exception
@@ -66,7 +66,7 @@ public class SocketControllerTest {
         given(socketManager.get(anyInt())).willReturn(Optional.empty());
 
         // when
-        Result actual = socketController.update(5, Socket.builder().id(5).build());
+        Result actual = socketController.update(5, Socket.builder().id(5).active(true).build());
 
         // then
         // exception
@@ -75,12 +75,12 @@ public class SocketControllerTest {
     @Test
     public void shouldUpdateOk() {
         // given
-        Optional<Socket> socket = of(Socket.builder().id(1).build());
+        Optional<Socket> socket = of(Socket.builder().id(1).active(true).build());
         given(socketManager.get(anyInt())).willReturn(socket);
         given(socketManager.update(anyInt(), any(Socket.class))).willReturn(socket);
 
         // when
-        Result actual = socketController.update(1, Socket.builder().id(1).build());
+        Result actual = socketController.update(1, Socket.builder().id(1).active(true).build());
 
         // then
         assertThat(actual.getOk(), is(true));

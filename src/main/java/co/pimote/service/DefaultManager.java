@@ -16,7 +16,7 @@ public class DefaultManager implements SocketManager {
 
     public DefaultManager() {
         this.sockets = range(1, 5)
-                .mapToObj(i -> Socket.builder().id(i).build())
+                .mapToObj(i -> Socket.builder().id(i).active(false).build())
                 .collect(toList());
     }
 

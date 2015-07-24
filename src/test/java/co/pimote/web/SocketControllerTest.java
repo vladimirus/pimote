@@ -86,4 +86,32 @@ public class SocketControllerTest {
         // then
         assertThat(actual.getOk(), is(true));
     }
+
+    @Test
+    public void shouldSwitchOn() {
+        // given
+        Optional<Socket> socket = of(aSocket(1));
+        given(socketManager.get(anyInt())).willReturn(socket);
+        given(socketManager.update(anyInt(), any(Socket.class))).willReturn(socket);
+
+        // when
+        Result actual = socketController.on(1);
+
+        // then
+        assertThat(actual.getOk(), is(true));
+    }
+
+    @Test
+    public void shouldSwitchOff() {
+        // given
+        Optional<Socket> socket = of(aSocket(1));
+        given(socketManager.get(anyInt())).willReturn(socket);
+        given(socketManager.update(anyInt(), any(Socket.class))).willReturn(socket);
+
+        // when
+        Result actual = socketController.off(1);
+
+        // then
+        assertThat(actual.getOk(), is(true));
+    }
 }

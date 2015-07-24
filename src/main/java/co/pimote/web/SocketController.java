@@ -36,4 +36,20 @@ public class SocketController {
                 socketManager.update(socket(id).getId(), socket).isPresent()
         ).build();
     }
+
+    @RequestMapping(value = "on", method = GET)
+    public Result on(@PathVariable("id") Integer id) {
+        return shortcut(id, true);
+    }
+
+    @RequestMapping(value = "off", method = GET)
+    public Result off(@PathVariable("id") Integer id) {
+        return shortcut(id, false);
+    }
+
+    private Result shortcut(Integer id, Boolean state) {
+        return Result.builder().ok(
+                socketManager.update(socket(id).getId(), Socket.builder().active(state).id(id).build()).isPresent()
+        ).build();
+    }
 }

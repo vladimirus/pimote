@@ -65,7 +65,6 @@ public class GpioTransmitter implements Transmitter {
 
         modulator.high();
         sleep(500); // keep enabled for a period
-
         modulator.low();
     }
 }

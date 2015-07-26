@@ -5,7 +5,6 @@ import static com.pi4j.io.gpio.RaspiPin.GPIO_11;
 import static com.pi4j.io.gpio.RaspiPin.GPIO_13;
 import static com.pi4j.io.gpio.RaspiPin.GPIO_15;
 import static com.pi4j.io.gpio.RaspiPin.GPIO_16;
-import static com.pi4j.io.gpio.RaspiPin.GPIO_18;
 import static com.pi4j.io.gpio.RaspiPin.GPIO_22;
 import static java.lang.Thread.sleep;
 
@@ -48,10 +47,10 @@ public class GpioTransmitter implements Transmitter {
         pins.put(3, gpio.provisionDigitalOutputPin(GPIO_16, LOW));
         pins.put(4, gpio.provisionDigitalOutputPin(GPIO_13, LOW));
 
-        askFsk = gpio.provisionDigitalOutputPin(GPIO_18, LOW);
+//        askFsk = gpio.provisionDigitalOutputPin(GPIO_18, LOW);
         modulator = gpio.provisionDigitalOutputPin(GPIO_22, LOW);
 
-        askFsk.low();
+//        askFsk.low();
         modulator.low();
     }
 

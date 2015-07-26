@@ -1,12 +1,12 @@
 package co.pimote.dao;
 
 import static com.pi4j.io.gpio.PinState.LOW;
-import static com.pi4j.io.gpio.RaspiPin.GPIO_17;
-import static com.pi4j.io.gpio.RaspiPin.GPIO_22;
-import static com.pi4j.io.gpio.RaspiPin.GPIO_23;
-import static com.pi4j.io.gpio.RaspiPin.GPIO_24;
-import static com.pi4j.io.gpio.RaspiPin.GPIO_25;
-import static com.pi4j.io.gpio.RaspiPin.GPIO_27;
+import static com.pi4j.io.gpio.RaspiPin.GPIO_00;
+import static com.pi4j.io.gpio.RaspiPin.GPIO_02;
+import static com.pi4j.io.gpio.RaspiPin.GPIO_03;
+import static com.pi4j.io.gpio.RaspiPin.GPIO_04;
+import static com.pi4j.io.gpio.RaspiPin.GPIO_05;
+import static com.pi4j.io.gpio.RaspiPin.GPIO_06;
 import static java.lang.Thread.sleep;
 
 import com.pi4j.io.gpio.GpioController;
@@ -43,13 +43,13 @@ public class GpioTransmitter implements Transmitter {
     public GpioTransmitter(GpioController gpio, SocketToBinaryConverter converter) {
         this.converter = converter;
         pins = new HashMap<>(4);
-        pins.put(1, gpio.provisionDigitalOutputPin(GPIO_17, LOW));
-        pins.put(2, gpio.provisionDigitalOutputPin(GPIO_22, LOW));
-        pins.put(3, gpio.provisionDigitalOutputPin(GPIO_23, LOW));
-        pins.put(4, gpio.provisionDigitalOutputPin(GPIO_27, LOW));
+        pins.put(1, gpio.provisionDigitalOutputPin(GPIO_00, LOW));
+        pins.put(2, gpio.provisionDigitalOutputPin(GPIO_03, LOW));
+        pins.put(3, gpio.provisionDigitalOutputPin(GPIO_04, LOW));
+        pins.put(4, gpio.provisionDigitalOutputPin(GPIO_02, LOW));
 
-        askFsk = gpio.provisionDigitalOutputPin(GPIO_24, LOW);
-        modulator = gpio.provisionDigitalOutputPin(GPIO_25, LOW);
+        askFsk = gpio.provisionDigitalOutputPin(GPIO_05, LOW);
+        modulator = gpio.provisionDigitalOutputPin(GPIO_06, LOW);
 
         askFsk.low();
         modulator.low();

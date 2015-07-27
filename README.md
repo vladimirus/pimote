@@ -17,4 +17,4 @@ Prerequisites:
 
 Run:
 
-    ./gradlew bootRun
+    sudo java -jar pimote.jar

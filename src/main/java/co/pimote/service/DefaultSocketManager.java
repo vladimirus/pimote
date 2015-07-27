@@ -37,6 +37,7 @@ public class DefaultSocketManager implements SocketManager {
                     .id(id)
                     .active(replace(existing.getActive(), socket.getActive()))
                     .build());
+            transmitter.transmit(result.get().getId(), result.get().getActive());
         }
 
         return result;

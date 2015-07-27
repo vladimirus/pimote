@@ -11,6 +11,7 @@ import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.verify;
 
 import co.pimote.dao.SocketDao;
+import co.pimote.dao.Transmitter;
 import co.pimote.model.Socket;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +28,8 @@ public class DefaultSocketManagerTest {
     private DefaultSocketManager defaultSocketManager;
     @Mock
     private SocketDao socketDao;
+    @Mock
+    private Transmitter transmitter;
 
     @Test
     public void shouldGet() {
@@ -66,6 +69,7 @@ public class DefaultSocketManagerTest {
 
         // then
         assertThat(actual.isPresent(), is(true));
+        verify(transmitter).transmit(1, true);
     }
 
     @Test

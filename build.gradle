@@ -54,7 +54,7 @@ task copyJar << {
         from 'build/libs'
         into 'dist'
         include '**/*.jar'
-        rename { String fileName -> 'pimot.jar'
+        rename { String fileName -> 'pimote.jar'
         }
     }
 }

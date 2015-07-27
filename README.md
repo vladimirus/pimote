@@ -1,4 +1,4 @@
-# What is pimot?
+# What is pimote?
 
 
 Web-service for Raspberry PI Pi-mote Control
@@ -16,7 +16,7 @@ Install:
 
 > ssh to your-raspberry-pi
 
-> wget [pimote.jar](../master/dist/pimote.jar)
+> wget [pimote.jar](../blob/master/dist/pimote.jar)
     
 Run:
 

@@ -9,12 +9,16 @@ public class TestFactory {
     }
 
     public static Socket aSocket() {
-        return aSocket(1);
+        return aSocket(1, true);
     }
 
     public static Socket aSocket(Integer id) {
+        return aSocket(id, true);
+    }
+
+    public static Socket aSocket(Integer id, Boolean active) {
         return Socket.builder()
-                .active(true)
+                .active(active)
                 .id(id)
                 .build();
     }

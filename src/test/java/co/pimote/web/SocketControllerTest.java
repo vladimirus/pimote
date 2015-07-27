@@ -3,6 +3,7 @@ package co.pimote.web;
 import static co.pimote.TestFactory.aSocket;
 import static java.util.Optional.of;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
@@ -18,6 +19,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -55,7 +57,7 @@ public class SocketControllerTest {
     public void shouldGetBadRequestWhenIdsDontMatch() {
 
         // when
-        Result actual = socketController.update(1, aSocket(2));
+        Socket actual = socketController.update(1, aSocket(2));
 
         // then
         // exception
@@ -67,7 +69,7 @@ public class SocketControllerTest {
         given(socketManager.get(anyInt())).willReturn(Optional.empty());
 
         // when
-        Result actual = socketController.update(5, aSocket(5));
+        Socket actual = socketController.update(5, aSocket(5));
 
         // then
         // exception
@@ -81,10 +83,10 @@ public class SocketControllerTest {
         given(socketManager.update(anyInt(), any(Socket.class))).willReturn(socket);
 
         // when
-        Result actual = socketController.update(1, aSocket(1));
+        Socket actual = socketController.update(1, aSocket(1));
 
         // then
-        assertThat(actual.getOk(), is(true));
+        assertThat(actual.getId(), is(1));
     }
 
     @Test
@@ -95,23 +97,25 @@ public class SocketControllerTest {
         given(socketManager.update(anyInt(), any(Socket.class))).willReturn(socket);
 
         // when
-        Result actual = socketController.on(1);
+        Collection<Socket> actual = socketController.on(new Integer[]{1});
 
         // then
-        assertThat(actual.getOk(), is(true));
+        assertThat(actual, hasSize(1));
+        assertThat(actual.iterator().next().getActive(), is(true));
     }
 
     @Test
     public void shouldSwitchOff() {
         // given
-        Optional<Socket> socket = of(aSocket(1));
+        Optional<Socket> socket = of(aSocket(1, true));
         given(socketManager.get(anyInt())).willReturn(socket);
-        given(socketManager.update(anyInt(), any(Socket.class))).willReturn(socket);
+        given(socketManager.update(anyInt(), any(Socket.class))).willReturn(of(aSocket(1, false)));
 
         // when
-        Result actual = socketController.off(1);
+        Collection<Socket> actual = socketController.off(new Integer[]{1});
 
         // then
-        assertThat(actual.getOk(), is(true));
+        assertThat(actual, hasSize(1));
+        assertThat(actual.iterator().next().getActive(), is(false));
     }
 }

@@ -20,7 +20,7 @@ public class SocketToBinaryConverter {
         sockets.put(3 + "" + true, "1101");
         sockets.put(3 + "" + false, "0101");
         sockets.put(4 + "" + true, "1100");
-        sockets.put(5 + "" + false, "0100");
+        sockets.put(4 + "" + false, "0100");
     }
 
     public Boolean convert(Integer socket, Boolean state, Integer pinNo) {

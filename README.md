@@ -16,7 +16,7 @@ Install:
 
 > ssh to your-raspberry-pi
 
-> wget [pimote.jar](../blob/master/LICENSE)
+> wget [pimote.jar](../master/dist/pimote.jar)
     
 Run:
 

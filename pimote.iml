@@ -55,5 +55,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.objenesis:objenesis:2.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.projectlombok:lombok:1.16.4" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.pi4j:pi4j-core:1.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-actuator:1.2.5.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-actuator:1.2.5.RELEASE" level="project" />
   </component>
 </module>

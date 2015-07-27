@@ -48,3 +48,15 @@ eclipse {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
+task copyJar << {
+    copy {
+        from 'build/libs'
+        into 'dist'
+        include '**/*.jar'
+        rename { String fileName -> 'pimot.jar'
+        }
+    }
+}
+
+copyJar.dependsOn assemble

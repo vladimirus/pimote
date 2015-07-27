@@ -58,7 +58,7 @@ public class GpioTransmitter implements Transmitter {
     @SneakyThrows
     @Override
     public synchronized void transmit(Integer socket, Boolean state) {
-        log.info(socket + ": changing to " + state);
+        log.info("socket " + socket + ": changing to " + state);
 
         pins.entrySet().stream().forEach(e -> e.getValue().setState(converter.convert(socket, state, e.getKey())));
         sleep(500); // let it settle, encoder requires this

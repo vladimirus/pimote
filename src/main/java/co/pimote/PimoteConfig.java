@@ -10,10 +10,28 @@ import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.mvc.WebContentInterceptor;
 
 @Configuration
-public class PimoteConfig {
+public class PimoteConfig extends WebMvcConfigurerAdapter {
     private Logger log = Logger.getLogger(PimoteConfig.class);
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(webContentInterceptor());
+    }
+
+    @Bean
+    public WebContentInterceptor webContentInterceptor() {
+        WebContentInterceptor interceptor = new WebContentInterceptor();
+        interceptor.setCacheSeconds(0);
+        interceptor.setUseExpiresHeader(true);
+        interceptor.setUseCacheControlHeader(true);
+        interceptor.setUseCacheControlNoStore(true);
+        return interceptor;
+    }
 
     @Bean
     public Jackson2ObjectMapperBuilder jacksonBuilder() {

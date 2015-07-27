@@ -9,7 +9,7 @@ Web-service for Raspberry PI Pi-mote Control
 Prerequisites:
 
 * Raspberry PI
-* Pi-mote Control [energenie4u ENER314](https://energenie4u.co.uk/index.php/catalogue/product/ENER314 "ENER314")
+* Pi-mote Control [Pi-mote control board](https://energenie4u.co.uk/index.php/catalogue/product/ENER314 "ENER314")
 * Java 8 or newer [Installation instructions](http://www.rpiblog.com/2014/03/installing-oracle-jdk-8-on-raspberry-pi.html "Installation instructions")
 
 Install:

@@ -7,6 +7,8 @@ import static com.pi4j.io.gpio.RaspiPin.GPIO_03;
 import static com.pi4j.io.gpio.RaspiPin.GPIO_04;
 import static com.pi4j.io.gpio.RaspiPin.GPIO_05;
 import static com.pi4j.io.gpio.RaspiPin.GPIO_06;
+import static java.lang.String.format;
+import static java.lang.String.valueOf;
 import static java.lang.Thread.sleep;
 
 import com.pi4j.io.gpio.GpioController;
@@ -61,10 +63,18 @@ public class GpioTransmitter implements Transmitter {
         log.info("socket " + socket + ": changing to " + state);
 
         pins.entrySet().stream().forEach(e -> e.getValue().setState(converter.convert(socket, state, e.getKey())));
+
         sleep(500); // let it settle, encoder requires this
 
+        log.info("socket " + socket + ": changing to " +
+                pins.entrySet().stream()
+                        .map(e -> valueOf(e.getValue().getState().getValue()))
+                        .reduce("", (a, b) -> format("%s %s", a, b)));
+
         modulator.high();
+
         sleep(500); // keep enabled for a period
+
         modulator.low();
     }
 }

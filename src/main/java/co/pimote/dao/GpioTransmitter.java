@@ -68,6 +68,7 @@ public class GpioTransmitter implements Transmitter {
 
         log.info("socket " + socket + ": changing to " +
                 pins.entrySet().stream()
+                        .filter(e -> e.getValue() != null && e.getValue().getState() != null)
                         .map(e -> valueOf(e.getValue().getState().getValue()))
                         .reduce("", (a, b) -> format("%s %s", a, b)));
 

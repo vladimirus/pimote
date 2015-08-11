@@ -45,10 +45,10 @@ public class GpioTransmitter implements Transmitter {
     public GpioTransmitter(GpioController gpio, SocketToBinaryConverter converter) {
         this.converter = converter;
         pins = new HashMap<>(4);
-        pins.put(1, gpio.provisionDigitalOutputPin(GPIO_00, LOW));
-        pins.put(2, gpio.provisionDigitalOutputPin(GPIO_03, LOW));
-        pins.put(3, gpio.provisionDigitalOutputPin(GPIO_04, LOW));
-        pins.put(4, gpio.provisionDigitalOutputPin(GPIO_02, LOW));
+        pins.put(1, gpio.provisionDigitalOutputPin(GPIO_02, LOW)); //D3
+        pins.put(2, gpio.provisionDigitalOutputPin(GPIO_04, LOW)); //D2
+        pins.put(3, gpio.provisionDigitalOutputPin(GPIO_03, LOW)); //D1
+        pins.put(4, gpio.provisionDigitalOutputPin(GPIO_00, LOW)); //D0
 
         askFsk = gpio.provisionDigitalOutputPin(GPIO_05, LOW);
         modulator = gpio.provisionDigitalOutputPin(GPIO_06, LOW);

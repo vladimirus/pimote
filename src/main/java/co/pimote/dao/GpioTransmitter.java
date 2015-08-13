@@ -64,7 +64,7 @@ public class GpioTransmitter implements Transmitter {
 
         pins.entrySet().stream().forEach(e -> e.getValue().setState(converter.convert(socket, state, e.getKey())));
 
-        sleep(500); // let it settle, encoder requires this
+        sleep(1000); // let it settle, encoder requires this
 
         log.info("socket " + socket + ": changing to " +
                 pins.entrySet().stream()
@@ -74,7 +74,7 @@ public class GpioTransmitter implements Transmitter {
 
         modulator.high();
 
-        sleep(500); // keep enabled for a period
+        sleep(2000); // keep enabled for a period
 
         modulator.low();
     }
